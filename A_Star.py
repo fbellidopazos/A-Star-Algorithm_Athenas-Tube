@@ -2,33 +2,21 @@ from queue import PriorityQueue
 import networkx as nx
 import stuff
 import matplotlib.pyplot as plt
+from utils import nodeState,backTracking,getAtenas
 
 
-class nodeState(): # We can store the path with object refernces
-    def __init__(self,node,parent,distance):
-        self.node=node
-        self.parent=parent
-        self.distance=distance
-
-def backTracking(final:nodeState): # We go back from final to start node
-    path=[]
-    cost=final.distance
-    statusNode=final
-    
-    while(statusNode.parent!=None):
-        path.append(statusNode.node)
-        statusNode=statusNode.parent
-    path.append(statusNode.node)
-    return path,cost
 
 
-G=stuff.getAtenas() # Get the Godamm MAP
+
+
+
+G=getAtenas() # Get the Godamm MAP
 
 start="Attiki"
 end="Akropoli"
 
 visitedList=[] # Nodes we alredy looked into 
-toVisit=PriorityQueue() # The Nodes to visit: get will return de min of all (f(n),node)
+toVisit=PriorityQueue() # The Nodes to visit: get will return de min of all (f(n),count,node)
 
 final=None
 found=False
@@ -55,8 +43,9 @@ while(not toVisit.empty() and (not found)): # We have nodes to visit
                 g(n): Distance between Parent & Child --> Stored in the Edge of the graph
                 h(n): How far are we from the end Node --> Need a function to calculate
             '''
-            f=lowestVertex.distance+G.edges[(lowestVertex.node,child)]["g(n)"] #Calculate f(n)=g(n)+h(n)
-            toInsert=nodeState(child,lowestVertex,f) # Create the tuple (Node,Parent)
+            g=lowestVertex.distance+G.edges[(lowestVertex.node,child)]["g(n)"]
+            f= g #Calculate f(n)=g(n)+h(n)
+            toInsert=nodeState(child,lowestVertex,g) # Create the tuple (Node,Parent,cost2getHere)
 
             if(toInsert.node not in visitedList): # Check if we have alredy been there (NO endless Loops)
                 toVisit.put((f,count,toInsert)) # We will need further examination of the node
@@ -74,6 +63,11 @@ else: # Something smells like a Bug in the Code..... Or the really Intelligent U
 
 # Show the Map
 color_map=['green', 'green', 'green', 'green', 'green', 'green', 'green', 'green', 'green', 'green', 'green', 'green', 'green', 'green', 'red', 'red', 'green', 'green', 'red', 'red', 'green', 'blue', 'blue', 'green', 'green', 'green', 'green', 'green', 'green', 'red', 'red', 'red', 'red', 'blue', 'red', 'red', 'red', 'red', 'red', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue']
-nx.draw_kamada_kawai(G,with_labels=True,edge_color=color_map,node_size=300,width=7,font_size=9)
+fig = nx.draw_kamada_kawai(G,with_labels=True,edge_color=color_map,node_size=75,width=6,font_size=5)
+
+
 plt.legend(["Estaciones"])
+
+plt.savefig("LineasMetro.png",dpi=1800)
 plt.show()
+
