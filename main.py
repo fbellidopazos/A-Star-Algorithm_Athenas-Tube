@@ -17,9 +17,11 @@ if(len(torurist)>=2):
             end=get_close_matches(torurist[i+1],nodes,1)[0]
 
             path=AStar(G,start,end)[0]
-            print(path)
+            
             result.extend(path)
             showMapFull(G,path,"magenta")
+        print("Todas las estaciones visitadas")
+        print("================================================")
         showMapFull(G,result,"magenta")
 
 
@@ -34,6 +36,7 @@ if(len(torurist)>=2):
     
 else:
     print("You lazy person, give me destinations")
+    
 '''
 #####################################################################################
 #                                                                                    # 
