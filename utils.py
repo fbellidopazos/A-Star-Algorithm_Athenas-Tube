@@ -83,7 +83,7 @@ def getAtenas():
         ("Aghios Eleftherios",{"lineas":[1], "coordenadas":(38.0201134,23.7318585) }),
         ("Kato Patisia",{"lineas":[1], "coordenadas":(38.0115762,23.7287924) }),
         ("Aghios Nikolaos",{"lineas":[1], "coordenadas":(38.006919,23.727711) }),
-        ("Attiki",{"lineas":[2,1], "coordenadas":(37.9994388,23.7227672) }),
+        ("Attiki",{"lineas":[1,2], "coordenadas":(37.9994388,23.7227672) }),
         ("Victoria",{"lineas":[1], "coordenadas":(37.9930768,23.7302859) }),
         ("Omonia",{"lineas":[1,2], "coordenadas":(37.9841465,23.7280893) }),
         ("Monastiraki",{"lineas":[1,3], "coordenadas":(37.9760854,23.7256256) }),

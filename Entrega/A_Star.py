@@ -33,6 +33,10 @@ def AStar(G,start:str,end:str,lessChanges=True):
             '''
             if(lessChanges and currentLine not in G.nodes[lowestVertex.node]["lineas"]):
                 currentLine=G.nodes[lowestVertex.node]["lineas"][0]
+                if(start == lowestVertex.node):
+                    if(G.nodes[end]["lineas"][0] in G.nodes[lowestVertex.node]["lineas"]):
+                        currentLine = currentLine=G.nodes[end]["lineas"][0]
+                
 
 
 
