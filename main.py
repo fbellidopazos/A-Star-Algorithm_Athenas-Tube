@@ -79,7 +79,7 @@ Proyecto realizado por:
 • Enrique Santatecla
 • Ivan Tello Lopez
 • Santiago Moreno Dominguez
-• Pablo
-• Jaime
+• Pablo San Miguel Martín
+• Jaime Gonzalez Delgado
 • Fernando Bellido Pazos
 '''
