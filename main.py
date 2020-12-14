@@ -5,12 +5,13 @@ import matplotlib.pyplot as plt
 
 G=getAtenas() # Get the Godamm MAP
 
-torurist=["Atiki","Akropoli","Panourmo"]
+torurist=["Larissa Sta","Panourmo"]
 result=[]
 
+nodes=G.nodes
 if(len(torurist)>=2):
     if(len(torurist)>2):
-        nodes=G.nodes
+        
         for i in range(len(torurist)-1):
             
             start=get_close_matches(torurist[i],nodes,1)[0] 
